@@ -116,7 +116,7 @@ struct PhotoSelectView: View {
                 .frame(width: 120, height: 50)
                 .foregroundStyle(.mainBackground)
                 .opacity(50)
-                .shadow(color: .shadow, radius: 5)
+                .shadow(color: .customShadow, radius: 5)
             Text("選択 \(selectPhotos.count) 件")
                 .font(.system(size: 15))
         }
@@ -132,7 +132,7 @@ struct PhotoSelectView: View {
                 Circle()
                     .frame(width: 50)
                     .foregroundStyle(.primary)
-                    .shadow(color: .shadow, radius: 5)
+                    .shadow(color: .customShadow, radius: 5)
                 VStack(spacing: 0) {
                     Image(systemName: "photo.badge.plus")
                         .resizable()

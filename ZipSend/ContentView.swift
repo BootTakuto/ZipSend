@@ -30,7 +30,7 @@ struct ContentView: View {
             Rectangle()
                 .foregroundStyle(.mainBackground)
                 .frame(height: 100)
-                .shadow(color: .shadow, radius: 5)
+                .shadow(color: .customShadow, radius: 5)
             HStack {
                 ReturnButton
                 Spacer()
@@ -49,7 +49,7 @@ struct ContentView: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 50)
                     .frame(width: 100, height: 50)
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(.cusotomPrimary)
                 Text("次へ")
                     .foregroundStyle(.white)
                     .fontWeight(.bold)
@@ -66,7 +66,7 @@ struct ContentView: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 50)
                     .frame(width: 100, height: 50)
-                    .foregroundStyle(.danger)
+                    .foregroundStyle(.customDanger)
                 Text("戻る")
                     .foregroundStyle(.white)
                     .fontWeight(.bold)

@@ -18,7 +18,7 @@ struct Loading: View {
             RoundedRectangle(cornerRadius: 10)
                 .frame(width: 120, height: 120)
                 .foregroundStyle(.mainBackground)
-                .shadow(color: .shadow, radius: 5)
+                .shadow(color: .customShadow, radius: 5)
             VStack(spacing: 15) {
                 ProgressView()
                     .scaleEffect(1.5)
