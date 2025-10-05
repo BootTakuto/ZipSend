@@ -8,18 +8,40 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var nowStep = 0
     @State var isDispLoading = false
+    @State var nowDispPage: PageNames = .appTitle
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.accentBackground
-            PhotoSelectView(isDispLoading: $isDispLoading)
-            ScreenOperateArea
+            
+            // タイトル画面
+            if nowDispPage == .appTitle {
+                AppTitle()
+            }
+            
+            // 写真選択画面
+            if nowDispPage == .photoSelect {
+                PhotoSelectView(isDispLoading: $isDispLoading)
+            }
+            
+            // 画面遷移操作エリア
+            if nowDispPage != .appTitle {
+                ScreenOperateArea
+            }
         }.ignoresSafeArea()
             .overlay {
                 if isDispLoading {
                     Loading()
                 }
+            }
+            .onAppear {
+                // タイトル表示後、写真選択画面へ
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    withAnimation {
+                        nowDispPage = .photoSelect
+                    }
+                }
+
             }
     }
     
@@ -32,9 +54,17 @@ struct ContentView: View {
                 .frame(height: 100)
                 .shadow(color: .customShadow, radius: 5)
             HStack {
-                ReturnButton
+                
+                // 操作画面の最初は次へボタン非表示
+                if nowDispPage != .photoSelect {
+                    ReturnButton
+                }
                 Spacer()
-                NextButton
+                // 操作画面の最後は戻るボタン非表示
+                if nowDispPage != .zipSend {
+                    NextButton
+                }
+                    
             }.padding(.horizontal, 25)
         }
         

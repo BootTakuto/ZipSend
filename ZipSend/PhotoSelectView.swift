@@ -34,10 +34,10 @@ struct PhotoSelectView: View {
             }.frame(width: screenSize.width, height: screenSize.height)
                 .overlay {
                     if !selectItems.isEmpty {
-                        SelectPhotoCntDispArea()
-                            .position(x: screenSize.width / 2, y: screenSize.height - 140)
-                        SelectPhotoCircleButton()
-                            .position(x: screenSize.width / 2 + 95, y: screenSize.height - 140)
+                        HStack {
+                            SelectPhotoCntDispArea()
+                            SelectPhotoCircleButton()
+                        } .position(x: screenSize.width / 2, y: screenSize.height - 140)
                     }
                 }
         }.ignoresSafeArea()
